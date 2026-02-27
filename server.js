@@ -12,6 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// for authentication
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
 // Basic route (test)
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
