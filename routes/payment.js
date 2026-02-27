@@ -14,4 +14,16 @@ router.post("/create", async (req, res) => {
 
 });
 
+router.get("/all", async (req, res) => {
+  try {
+    const payments = await Payment.find()
+      .populate("paidBy", "name")
+      .populate("paidFor", "name");
+
+    res.json(payments);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching payments" });
+  }
+});
+
 module.exports = router;
