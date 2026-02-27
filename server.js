@@ -22,6 +22,10 @@ app.use(express.json());
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+// for payment
+const paymentRoutes = require("./routes/payment");
+app.use("/api/payment", paymentRoutes);
+
 // Basic route (test)
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
